@@ -1,6 +1,6 @@
 # Task 1: Distribution of chocolates
-import random  # Importing random module for generating random values
-from enum import Enum  # Importing Enum for defining enumerations
+import random  #Importing random module for generating random values (price and weight)
+from enum import Enum  # mporting Enum for defining enumerations
 
 # Definitions for Chocolate and ChocolateType
 class ChocolateType(Enum):
@@ -19,7 +19,7 @@ class Chocolate:
         self.type = type
 
 def generate_chocolates(num_chocolates):
-    # Generate a list of Chocolate objects with random attributes.
+    #Generate a list of Chocolate objects with random attributes.
     return [
         Chocolate(i, random.randint(1, 5), random.randint(10, 20), random.choice(list(ChocolateType)))
         for i in range(1, num_chocolates + 1)
@@ -34,7 +34,7 @@ def distribute_chocolates_iteratively(chocolates, num_students):
     return distribution
 
 def distribute_chocolates_recursively(chocolates, num_students, index=0, distribution=None):
-    # Recursively distribute chocolates to students.
+    #Recursively distribute chocolates to students
     if distribution is None:
         distribution = []
     if index >= num_students or index >= len(chocolates):
@@ -44,8 +44,7 @@ def distribute_chocolates_recursively(chocolates, num_students, index=0, distrib
     distribution.append(f"{student_name} got {chocolate.type.value}, chocolate ID {chocolate.id}, Price: {chocolate.price} AED, Weight: {chocolate.weight}gm")
     return distribute_chocolates_recursively(chocolates, num_students, index + 1, distribution)
 
-# Distribution Demonstration
-num_students = 10  # Adjust this to test with different numbers of students
+num_students = 10  # Adjust this to test with different numbers of students 
 chocolates = generate_chocolates(num_students)
 
 if num_students < 0:
@@ -96,7 +95,7 @@ else:
                 k += 1
 
     def sort_chocolates(chocolates):
-        # Sort chocolates by weight and price using merge sort.
+        #Sort chocolates by weight and price using merge sort.
         sorted_by_weight = chocolates[:]
         sorted_by_price = chocolates[:]
 
@@ -105,7 +104,7 @@ else:
 
         return sorted_by_weight, sorted_by_price
 
-    # Task 2: Sorting Demonstration
+    #Sorting Demonstration
     sorted_by_weight, sorted_by_price = sort_chocolates(chocolates)
     print("\nSorted by Weight:")
     for chocolate in sorted_by_weight:
@@ -117,7 +116,7 @@ else:
 
     # Task 3 : Searching using Binary search
     def binary_search_chocolates(chocolates, target, key):
-        # Perform binary search on chocolates based on weight or price.
+        #Perform a binary search on chocolates based on weight or price.
         low = 0
         high = len(chocolates) - 1
 
@@ -138,7 +137,7 @@ else:
                 return f"\nFound chocolate with {key} {target} at position {mid} (ID {chocolates[mid].id})."
         return f"\nNo chocolate with {key} {target} found."
 
-    # Searching Demonstration
+    #Searching Demonstration
     search_result_weight = binary_search_chocolates(sorted_by_weight, 2, "weight")
     print(search_result_weight)
 
