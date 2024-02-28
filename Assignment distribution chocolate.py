@@ -48,7 +48,9 @@ def distribute_chocolates_recursively(chocolates, num_students, index=0, distrib
 num_students = 10  # Adjust this to test with different numbers of students
 chocolates = generate_chocolates(num_students)
 
-if num_students == 0:
+if num_students < 0:
+    print("Can't have negative students!")
+elif num_students == 0:
     print("There are no students available.")
 else:
     iterative_distribution = distribute_chocolates_iteratively(chocolates, num_students)
